@@ -44,8 +44,9 @@ return view('auth.login')->with('error','Logged out successfully');
 
 public function viewusers(){
     
-    $users=DB::select("select * from users EXCEPT select * from users where level='0' ");
-    
+//    $users=DB::select("select * from users EXCEPT select * from users where level='0' ");
+    $users=User::where('level','=',0)->get();
+
     return view('dashboard.manageuser')->with('users',$users);
 
 }
